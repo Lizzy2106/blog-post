@@ -1,0 +1,45 @@
+{%extends 'main.html' %}
+{% load static %}
+{% block banner %}{% static 'img/post-sample-image.jpg'%}{%endblock%}
+{% block main_content %}
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p>Créer un nouvel article ici. Soyez indulgents à propos de l'éditeur de pouris.</p>
+        <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+        <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+        <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+        <form name="createPost" id="postForm" method="POST" novalidate>{% csrf_token %}
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Titre</label>
+              <input name="title" type="text" class="form-control" placeholder="Titre" id="titre" required data-validation-required-message="Veuillez entrer le titre de votre article">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Résumé</label>
+              <input name="resum" type="text" class="form-control" placeholder="Résumé" id="resume">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Contenu</label>
+              <textarea name="content" cols="42" rows="10" required="true" id="id_content" class="form-control" placeholder="Ceci est le contenu de mon post" id="contenu" required data-validation-required-message="Votre article n'a aucun contenu"></textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="sendPostButton">Poster</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
